@@ -1,0 +1,27 @@
+{
+    "metadata": {
+        "title":"BioKG_transE_opt_parameter_20220314"
+    },
+    "pipeline": {
+        "dataset":"BioKG",
+        "model":"TransE",
+        "model_kwargs":{
+            "embedding_dim": 378
+        },
+        "optimizer":"adagrad",
+        "optimizer_kwargs":{
+            "lr": 0.078
+        },
+        "loss":"NSSALoss",
+        "loss_kwargs":{"margin":1},
+        "training_loop":"slcwa",
+        "training_kwargs":{
+            "num_epochs":540,"batch_size":1024,"use_tqdm_batch":false,"use_tqdm":true,"num_workers":4
+        },
+        "negative_sampler":"basic",
+        "negative_sampler_kwargs":{
+            "num_negs_per_pos":91
+        },
+        "evaluator_kwargs":{"filtered":true}
+    }
+}

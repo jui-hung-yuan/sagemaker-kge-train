@@ -1,0 +1,30 @@
+{
+    "optuna": {
+        "n_trials":100,
+        "sampler":"RandomSampler",
+        "timeout":86400
+    },
+    "pipeline": {
+        "dataset":"BioKG",
+        "model":"TransE",
+        "model_kwargs_ranges":{
+            "embedding_dim":{"type":"int", "low":64, "high":256, "step":16}
+        },
+        "optimizer":"adagrad",
+        "optimizer_kwargs_ranges":{
+            "lr":{"type":"float", "low":0.001, "high":0.1, "log":true}
+        },
+        "loss":"NSSALoss",
+        "loss_kwargs":{"margin":1},
+        "training_loop":"slcwa",
+        "training_kwargs":{"batch_size":1024,"use_tqdm_batch":false},
+        "training_kwargs_ranges":{
+            "num_epochs":{"type":"int", "low":100, "high":900, "step":100}
+        },
+        "negative_sampler":"basic",
+        "negative_sampler_kwargs_ranges":{
+            "num_negs_per_pos":{"type":"int", "low":1, "high":101, "step":10}
+        },
+        "evaluator_kwargs":{"filtered":true}
+    }
+}
